@@ -1,1 +1,1 @@
-# Rurirat.github.io
+新手，勿喷
