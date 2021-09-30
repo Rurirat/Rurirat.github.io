@@ -1,0 +1,27 @@
+
+<div style="margin:0 auto;width:960px;height:auto;">
+<textarea style="margin:0 auto;width:960px;height:auto;" rows="35" cols="80" readonly>
+
+#include <iostream>
+#define echo(x) ::std::cout<<#x" = "<<(x)<<::std::endl
+
+void t()
+{
+	echo(__FUNCTION__);
+	
+	if(true)
+	{
+		echo(__FUNCTION__);
+	}
+}
+int main()
+{
+	echo(__LINE__);
+	echo(__FUNCTION__);
+
+	t();
+}
+
+</textarea>
+</div>
+	
