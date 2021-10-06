@@ -1,6 +1,7 @@
 
 
 
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; ">
@@ -181,8 +182,8 @@
 					please refer to <a href="/F.html">a sample</a>
 				</p>
 			</p>
-
 			</div>
+			
 			<div class="col-md-3 col-sm-4 col-xs=6 myStyle">
 			<p>
 				<h3>Math - about prime numbers</h3>
@@ -204,6 +205,30 @@
 				</p>
 			</p>
 			</div>  
+
+			</div>
+			<div class="col-md-3 col-sm-4 col-xs=6 myStyle">
+			<p>
+				<h3>About C++ programming</h3>
+				<p>
+					Before C++11, references binding to references are banned<br>
+					In C++11, <br>
+					'T& &' = 'T&'<br>
+					'T&& &' = 'T&'<br>
+					'T& &&' = 'T&'<br>
+					'T&& &&' = 'T&&'<br>
+					<br>
+					if we have<br>
+					using T=void*&(** )(int&(* [])(void), int(*)[2]);<br>
+					then T is a type of a pointer pointing to a pointer pointing to a function which has 2 args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;	arg1 is an array of unknown size, whose element type is a pointer pointing to a function, which has 0 args and returns 'int&'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;	arg2 is a pointer pointing to an array 'int[2]'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;	and returns the reference of a pointer 'void*'<br>
+					The 'arg1' above is an imcompleted type because its size is unknown
+				</p>
+			</p>
+			</div> 
+			
 		</div>
 	</div>
 	
