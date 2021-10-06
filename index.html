@@ -220,11 +220,12 @@
 					<br>
 					if we have<br>
 					using T=void*&(** )(int&(* [])(void), int(*)[2]);<br>
-					then T is a type of a pointer pointing to a pointer pointing to a function which has 2 args:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;	arg1 is an array of unknown size, whose element type is a pointer pointing to a function, which has 0 args and returns 'int&'<br>
-&nbsp;&nbsp;&nbsp;&nbsp;	arg2 is a pointer pointing to an array 'int[2]'<br>
+					then T is a type of a pointer to a pointer to a function which has 2 args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;	arg1 is an array of unknown size, whose element type is a pointer to a function, which has 0 args and returns 'int&'<br>								            
+&nbsp;&nbsp;&nbsp;&nbsp;	arg2 is a pointer to an array 'int[2]'<br>
 &nbsp;&nbsp;&nbsp;&nbsp;	and returns the reference of a pointer 'void*'<br>
-					The 'arg1' above is an imcompleted type because its size is unknown
+					The 'arg1' above is an imcompleted type because its size is unknown<br>
+					Please refer to <a href="https://cdecl.org/">cdecl.org</a>
 				</p>
 			</p>
 			</div> 
