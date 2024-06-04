@@ -1,0 +1,51 @@
+/*
+规则1 ：试图修改声明为const的变量会导致编译错误
+规则2 ：修改实际为const的对象是UB
+
+解释：
+1. 【以非const引用绑定到X】【以非const指针接收&X】违反规则1，但不违反规则2
+2. 所以任何对变量的修改都可以分为：
+	1.不违反规则1和规则2：OK
+    2.违反规则1：编译错误（此时无需讨论是否违反规则2） 
+    3.不违反规则1但违反规则2：UB
+*/
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    const int A=114;
+    A=514;            // 编译错误：试图修改A 
+    int& a1=A;        // 编译错误：不能以非const引用绑定到A 
+    const int& a2=A;  // OK
+    a2=414;           // 编译错误：试图修改a2 
+    int& a3=const_cast<int&>(A);  // OK：并未违反规则2
+    a3=0;             // UB：修改了实际为const的对象A；
+                      // 注意此行并未违反规则1，因为a3并未声明为const
+    int* a4=const_cast<int*>(&A); // OK
+    *a4=0;            // UB
+    cout<<"A = "<<A<<endl;
+    cout<<boolalpha<<"a3==*a4 : "<<(a3==*a4)<<endl;
+    
+    int B=514;
+    B=115;            // OK
+    int& b1=B;        // OK
+    b1=414;           // OK
+    const int& b2=B;  // OK：const引用可以绑定到非const对象
+    b2=0;             // 编译错误：试图修改b2
+    const_cast<int&>(b2)=0;       // OK
+    *const_cast<int*>(&b2)=0;     // OK，与上一行等价
+    int& b3=b2;       // 编译错误
+    int& b4=const_cast<int&>(b2); // OK
+    b4=1;             // OK
+    cout<<"B = "<<B<<endl;
+    
+    char* C="hello";  // 实践OK：为了兼容C，不得不允许这样做 
+                      // 其实这违反了规则1："hello"的类型是const char[6]
+                      // 应该用const char*
+    puts(C);          // OK
+    C[5]='!';         // UB
+}
+
+
+
